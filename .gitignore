@@ -1,23 +1,40 @@
+# ---------------------
 # Python
+# ---------------------
 __pycache__/
 
+# ---------------------
 # IDEs and Editors
+# ---------------------
 .vscode/      
 
+# ---------------------
 # Logs and Output
+#
+# These directories are kept in Git for structure, but their
+# contents are ignored as they are generated during runtime.
+# ---------------------
+# Ignore all contents of the logs directory
 experiments/logs/**
 !experiments/logs/.gitkeep
+
 experiments/hpc_logs/**
 !experiments/hpc_logs/.gitkeep
+
 experiments/checkpoints/**
 !experiments/checkpoints/.gitkeep
+
 outputs/** 
 !outputs/.gitkeep
 
+# ---------------------
 # Data
+# ---------------------
 data/**
 !data/.gitkeep
 
+# ---------------------
 # Scripts
+# ---------------------
 scripts/**
 !scripts/.gitkeep
