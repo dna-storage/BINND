@@ -1,0 +1,1 @@
+from .cnn import CNNBinaryClassifierV3, CNNBinaryClassifier2V1, CNNBinaryClassifierV3Original, CNNBinaryClassifierLite

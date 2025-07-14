@@ -1,0 +1,4 @@
+seq1,seq2,label
+ATTC,AGCT,1
+GCTA,ATCG,0
+CGTA,TACG,1

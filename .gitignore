@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+
+# IDEs and Editors
+.vscode/      
+
+# Logs and Output
+experiments/logs/**
+!experiments/logs/.gitkeep
+experiments/hpc_logs/**
+!experiments/hpc_logs/.gitkeep
+experiments/checkpoints/**
+!experiments/checkpoints/.gitkeep
+outputs/** 
+!outputs/.gitkeep
+
+# Data
+data/**
+!data/.gitkeep
+
+# Scripts
+scripts/**
+!scripts/.gitkeep
