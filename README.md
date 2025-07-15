@@ -1,8 +1,19 @@
-# BINND
+# BINND: Binding and Interaction Neural Network for DNA
 
 This repository contains the official implementation of **BINND (Binding and Interaction Neural Network for DNA)**, a novel framework designed to predict interactions between DNA molecules with high accuracy and speed.
 
-# Setup and Installation
+## Table of Contents
+
+-   [Project Overview](#project-overview)
+-   [Setup and Installation](#setup-and-installation)
+    -   [Prerequisites](#prerequisites)
+    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide)
+
+## Project Overview
+
+The ability to predict the interactions between DNA molecules is broadly important. It underlies core research methods in molecular and cell biology, drives the accuracy of disease detection and diagnostic tools, supports high throughput bioengineering, and could unlock next generation technologies like DNA-based data storage and computation. Here, we present BINND - Binding and Interaction Neural Network for DNA. BINND comprises an ultra-high throughput wet lab platform that measures millions of DNA-DNA interactions and a deep learning model that attains accuracies greater than 80% and generalizability across a diverse sequence space and varied interaction environments. Our framework leverages a Convolutional Neural Network (CNN) architecture to learn complex binding patterns directly from raw DNA sequences. In addition to its leading accuracy, BINND achieves speeds 2 orders of magnitude greater than current state-of-the-art models.
+
+## Setup and Installation
 
 To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components.
 
