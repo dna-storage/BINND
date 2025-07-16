@@ -8,6 +8,13 @@ This repository contains the official implementation of **BINND (Binding and Int
 -   [Setup and Installation](#setup-and-installation)
     -   [Prerequisites](#prerequisites)
     -   [Step-by-Step Setup Guide](#step-by-step-setup-guide)
+        -   [1. Clone the Repository](#1-clone-the-repository)
+        -   [2. Initialize the Project Environment](#2-initialize-the-project-environment)
+        -   [3. Activate Your New Environment](#3-activate-your-new-environment)
+        -   [4. Load Custom Environment Variables](#4-load-custom-environment-variables)
+-   [Using BINND for Prediction](#using-binnd-for-prediction)
+-   [Expanding BINND: Training Your Own Model](#expanding-binnd-training-your-own-model)
+
 
 ## Project Overview
 
@@ -88,7 +95,7 @@ python sample_inference.py
 
 - **What to expect:** Upon execution, the model will process the sample DNA sequences and output its predictions directly to your terminal. 
 
-## Training Your Own Model
+## Expanding BINND: Training Your Own Model
 
 While BINND comes with pre-trained models for immediate use, our framework is designed to be fully extensible. The BINND framework is designed with extensive modularity, allowing researchers and developers to easily modify and experiment with different components of the training and evaluation pipelines. For those interested in customizing BINND, you have the flexibility to train a new model from scratch and rigorously evaluate its performance.
 
