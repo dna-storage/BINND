@@ -97,4 +97,4 @@ This capability allows you to:
 - Measure time and memory consumption of different stages of the deep learning pipeline
 - Benchmark BINND's performance on your proprietary data.
 
-Comprehensive, step-by-step instructions on how to set up your training environment, prepare your data, configure training parameters, and evaluate your custom BINND model are available in our dedicated [BINND Training Wiki]([https://github.ncsu.edu/dna-based-storage/BINND/wiki/BINND:-Training-and-Testing-Guide]).
+Comprehensive, step-by-step instructions on how to set up your training environment, prepare your data, configure training parameters, and evaluate your custom BINND model are available in our dedicated [BINND Training Wiki](https://github.ncsu.edu/dna-based-storage/BINND/wiki/BINND:-Training-and-Testing-Guide).
