@@ -50,8 +50,8 @@ def plot_logs(train_log_path, val_log_path, out_dir):
 
 
 if __name__ == "__main__":
-    train_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/train_log.csv"
-    val_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/val_log.csv"
-    out_dir = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2"
+    train_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/train_log.csv"
+    val_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/val_log.csv"
+    out_dir = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2"
 
     plot_logs(train_log_path, val_log_path, out_dir)

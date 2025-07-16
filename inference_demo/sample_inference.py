@@ -1,9 +1,10 @@
 import torch
 import numpy as np
-from networks.cnn import CNNBinaryClassifierV3Original
+import os
+from networks.cnn import BINND, BINNDLite
 from dataloader.dataset import HTPDataset
 
-MODEL_PATH = "BINND.pt"
+MODEL_PATH = "BINND.pt" # Path to the pre-trained model file. Choose between BINND.pt or BINNDLite.pt
 MAX_SEQUENCE_LENGTH = 20 # The current implementation only supports sequences of length 20
 
 
@@ -98,9 +99,17 @@ def predict_binding(
 if __name__ == "__main__":
     device = get_device()
 
+    # Determine which model class to load based on MODEL_PATH
+    filename = os.path.basename(MODEL_PATH)
+
     # Load the model
     try:
-        model = CNNBinaryClassifierV3Original().to(device)
+        if filename == "BINND.pt":
+            model = BINND().to(device)
+        elif filename == "BINNDLite.pt":
+            model = BINNDLite().to(device)
+        else:
+            raise ValueError(f"Unsupported model file: {filename}")
         model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
         model.eval()  # Set the model to evaluation mode
         print(f"Model loaded successfully from {MODEL_PATH}")
@@ -112,7 +121,7 @@ if __name__ == "__main__":
         exit()
     
     
-     # Example sequences for inference
+    # Example sequences for inference
     example_seq1 = "AGCGATACGCCTTAACGTCT" # This should be 20 nucleotides long. 5' to 3' end
     example_seq2 = "AATGGCGAAGGGGATCGTTC" # This should also be 20 nucleotides long. 5' to 3' end
     

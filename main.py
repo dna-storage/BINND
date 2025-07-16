@@ -45,10 +45,10 @@ def main(data_directory, network_name, encode_fn_name, max_seq_length, batch_siz
         model = networks.CNNBinaryClassifierV3().to(device)
     elif network_name == "CNNBinaryClassifier2V1":
         model = networks.CNNBinaryClassifier2V1().to(device)
-    elif network_name == "CNNBinaryClassifierV3Original":
-        model = networks.CNNBinaryClassifierV3Original().to(device)
-    elif network_name == "CNNBinaryClassifierLite":
-        model = networks.CNNBinaryClassifierLite().to(device)
+    elif network_name == "BINND":
+        model = networks.BINND().to(device)
+    elif network_name == "BINNDLite":
+        model = networks.BINNDLite().to(device)
     else:
         raise ValueError("Invalid network name")
     

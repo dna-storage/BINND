@@ -47,5 +47,5 @@ if __name__ == '__main__':
     #                          val_size=0.1)
     #=============================================================================================================
     split_predictions_based_on_beadprimer("/gpfs_backup/tuck_data/gbrihad/htp/data/ml_datasets/htp_oct_2024_cond2/balanced/merged/test.csv",
-                                          "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_log.csv",
+                                          "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_log.csv",
                                           "/gpfs_backup/tuck_data/gbrihad/DNABindML/outputs/prediction_beadprimer_split")

@@ -3,19 +3,27 @@ import torch.optim as optim
 import torch.nn as nn
 from sklearn.metrics import accuracy_score
 import numpy as np
+import os
 
 def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, device, checkpoint_dir, log_dir, num_epochs=5, patience=2, log_interval=500):
-    
-    train_log = open(f"{log_dir}/train_log.csv", "w")
-    val_log = open(f"{log_dir}/val_log.csv", "w")
-    train_log.write("epoch,batch,loss,accuracy\n")
-    val_log.write("epoch,batch,loss,accuracy\n")
+    # Open log files
+    train_log_path = os.path.join(log_dir, "train_log.csv")
+    val_log_path = os.path.join(log_dir, "val_log.csv")
+    try:
+        train_log = open(train_log_path, "w")
+        val_log = open(val_log_path, "w")
+        train_log.write("epoch,batch,loss,accuracy\n")
+        val_log.write("epoch,batch,loss,accuracy\n")
+        print(f"Log files opened: {train_log_path}, {val_log_path}")
+    except IOError as e:
+        print(f"ERROR: Could not open log files. Please check directory permissions: {e}")
+        return # Exit function if logs cannot be written
     
     valid_loss_min = np.inf # track change in validation loss
     epochs_since_improvement = 0  # track epochs since last improvement
 
     for epoch in range(num_epochs):
-        
+        print(f"\n--- Epoch {epoch}/{num_epochs} ---") # Epochs are 0-indexed internally, but 1-indexed for display
         # Track cumulative loss and accuracy for log_interval-batch intervals
         cumulative_loss = 0.0
         cumulative_correct = 0
@@ -25,6 +33,8 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
         # Training the model #
         ######################
         model.train()
+        print("Training phase started...")
+        total_batches = len(train_dataloader)
         for i_batch, sample_batched in enumerate(train_dataloader):
             inputs, labels = sample_batched['matrix'].to(device), sample_batched['label'].to(device)
             
@@ -55,7 +65,7 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
             if (i_batch + 1) % log_interval == 0:
                 avg_loss = cumulative_loss / cumulative_samples
                 avg_accuracy = cumulative_correct / cumulative_samples
-                print(f"Epoch {epoch}, Batch {i_batch+1}, Avg. Loss: {avg_loss:.4f}, Avg. Accuracy: {avg_accuracy:.4f}")
+                print(f"Epoch {epoch}, Batch {i_batch+1}/{total_batches}, Avg. Loss: {avg_loss:.4f}, Avg. Accuracy: {avg_accuracy:.4f}")
 
                 train_log.write(f"{epoch},{i_batch+1},{avg_loss:.4f},{avg_accuracy:.4f}\n")
                 train_log.flush()
@@ -75,6 +85,8 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
         valid_loss = 0.0
 
         model.eval()
+        print("Validation phase started...")
+        total_batches = len(val_dataloader)
         for i_batch, sample_batched in enumerate(val_dataloader):
             inputs, labels = sample_batched['matrix'].to(device), sample_batched['label'].to(device)
             
@@ -94,7 +106,7 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
             if (i_batch + 1) % log_interval == 0:
                 avg_loss = cumulative_loss / cumulative_samples
                 avg_accuracy = cumulative_correct / cumulative_samples
-                print(f"Epoch {epoch}, Batch {i_batch+1}, Avg. Loss: {avg_loss:.4f}, Avg. Accuracy: {avg_accuracy:.4f}")
+                print(f"Epoch {epoch}, Batch {i_batch+1}/{total_batches}, Avg. Loss: {avg_loss:.4f}, Avg. Accuracy: {avg_accuracy:.4f}")
                 val_log.write(f"{epoch},{i_batch+1},{avg_loss:.4f},{avg_accuracy:.4f}\n")
                 val_log.flush()
 
@@ -120,6 +132,11 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
             print(f'Early stopping triggered after {patience} epochs of no improvement in validation loss.')
             break
 
-
+    # --- Final Prints ---
+    print(f"\n--- Training Finished ---")
+    print(f"Best validation loss achieved: {valid_loss_min:.6f}")
+    print(f"Model saved to: {checkpoint_dir}/best_model.pt")
+    
     train_log.close()
     val_log.close()
+    print("Log files closed.")

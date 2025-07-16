@@ -21,7 +21,7 @@ def get_max_memory_usage_mb():
     return usage.ru_maxrss / 1024  # returns MB on Linux
 
 if __name__ == "__main__":
-    mean, std = calculate_mean_std("/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_perf_comp_sequences/test_log.csv",
+    mean, std = calculate_mean_std("/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_perf_comp_sequences/test_log.csv",
                         "Probability")
     
     print(f"Mean: {mean}, Standard Deviation: {std}")

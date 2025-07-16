@@ -40,9 +40,9 @@ def plot_prediction_probability_distribution(file_path, out_path):
    
 if __name__ == "__main__":
     # Example usage
-    # plot_prob_density_func('/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_perf_comp_sequences/test_log.csv', 
+    # plot_prob_density_func('/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_perf_comp_sequences/test_log.csv', 
     #                        'Probability', 
     #                        'prob_density_func.png')
     #========================================================================================================
-    plot_prediction_probability_distribution("/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/CNNBinaryClassifierV3Original_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_random_1mill_E/test_log.csv",
+    plot_prediction_probability_distribution("/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_random_1mill_E/test_log.csv",
                                              "random_1mill_E.png")

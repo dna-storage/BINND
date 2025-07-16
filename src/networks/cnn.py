@@ -103,9 +103,9 @@ class CNNBinaryClassifierV3(nn.Module):
         
         return x
 
-class CNNBinaryClassifierLite(nn.Module):
+class BINNDLite(nn.Module):
     def __init__(self):
-        super(CNNBinaryClassifierLite, self).__init__()
+        super(BINNDLite, self).__init__()
 
          # 2D Convolutional Block: Extracts spatial features from input
         self.conv2d_block = nn.Sequential(
@@ -160,9 +160,9 @@ class CNNBinaryClassifierLite(nn.Module):
         
         return x
 
-class CNNBinaryClassifierV3Original(nn.Module):
+class BINND(nn.Module):
     def __init__(self):
-        super(CNNBinaryClassifierV3Original, self).__init__()
+        super(BINND, self).__init__()
 
          # 2D Convolutional Block: Extracts spatial features from input
         self.conv2d_block = nn.Sequential(
