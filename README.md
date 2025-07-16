@@ -73,13 +73,17 @@ Your project requires specific environment variables (like `PYTHONPATH`) to be s
 
 - **`. set_env.sh`**: This command loads the necessary environment variables for your project. The `.` (dot) at the beginning is important!
 
-### 5. Run the Sample Inference
+## Using BINND for Prediction
 
-Once your environment is fully set up and activated, you can run the demo inference script:
+Now that your environment is fully set up and activated, you're ready to leverage BINND's predictive power. The `inference_demo` directory provides an example of how to use the trained model to predict DNA-DNA interactions.
+
+This step demonstrates the core functionality of BINND: taking DNA sequences as input and predicting their binding behavior with high accuracy.
+
+Navigate to the `inference_demo` directory and run the sample inference script:
 
 ```bash
 cd inference_demo
 python sample_inference.py
 ```
 
-- **What to expect:** This will run the model on sample data and print the prediction results to your terminal.
+- **What to expect:** Upon execution, the model will process the sample DNA sequences and output its predictions directly to your terminal. 
