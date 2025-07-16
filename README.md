@@ -87,3 +87,14 @@ python sample_inference.py
 ```
 
 - **What to expect:** Upon execution, the model will process the sample DNA sequences and output its predictions directly to your terminal. 
+
+## Training Your Own Model
+
+While BINND comes with pre-trained models for immediate use, our framework is designed to be fully extensible. The BINND framework is designed with extensive modularity, allowing researchers and developers to easily modify and experiment with different components of the training and evaluation pipelines. For those interested in customizing BINND, you have the flexibility to train a new model from scratch and rigorously evaluate its performance.
+
+This capability allows you to:
+- Explore new deep learning architectures and encoding schemes
+- Measure time and memory consumption of different stages of the deep learning pipeline
+- Benchmark BINND's performance on your proprietary data.
+
+Comprehensive, step-by-step instructions on how to set up your training environment, prepare your data, configure training parameters, and evaluate your custom BINND model are available in our dedicated [BINND Training Wiki]([https://github.ncsu.edu/dna-based-storage/BINND/wiki/BINND:-Training-and-Testing-Guide]).
