@@ -17,12 +17,14 @@ __pycache__/
 # Ignore all contents of the logs directory
 experiments/logs/**
 !experiments/logs/.gitkeep
+!experiments/logs/demo
 
 experiments/hpc_logs/**
 !experiments/hpc_logs/.gitkeep
 
 experiments/checkpoints/**
 !experiments/checkpoints/.gitkeep
+!experiments/checkpoints/demo
 
 outputs/** 
 !outputs/.gitkeep
@@ -32,9 +34,15 @@ outputs/**
 # ---------------------
 data/**
 !data/.gitkeep
+!data/demo/
 
 # ---------------------
 # Scripts
 # ---------------------
 scripts/**
 !scripts/.gitkeep
+
+# ---------------------
+# Scratch source files
+# ---------------------
+src/scratchpad.py
