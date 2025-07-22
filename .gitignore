@@ -42,8 +42,7 @@ data/**
 # ---------------------
 # Scripts
 # ---------------------
-scripts/**
-!scripts/.gitkeep
+scripts/hpc_scripts.py
 
 # ---------------------
 # Scratch source files

@@ -42,13 +42,13 @@ conda activate "$ENV_NAME"
 echo "Environment activated."
 
 # 4. Source the custom environment setup script
-echo "--- Sourcing custom environment variables from $SET_ENV_SCRIPT ---"
-if [ -f "$SET_ENV_SCRIPT" ]; then
-    . "./$SET_ENV_SCRIPT" # Use '.' or 'source' to run the script in the current shell context
-    echo "Custom environment variables loaded for this script's execution."
-else
-    echo "WARNING: '$SET_ENV_SCRIPT' not found. Skipping custom environment setup."
-fi
+# echo "--- Sourcing custom environment variables from $SET_ENV_SCRIPT ---"
+# if [ -f "$SET_ENV_SCRIPT" ]; then
+#     . "./$SET_ENV_SCRIPT" # Use '.' or 'source' to run the script in the current shell context
+#     echo "Custom environment variables loaded for this script's execution."
+# else
+#     echo "WARNING: '$SET_ENV_SCRIPT' not found. Skipping custom environment setup."
+# fi
 
 # 5. Install specific PyTorch version
 echo "--- Installing specific PyTorch version via pip ---"
