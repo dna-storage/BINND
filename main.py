@@ -90,7 +90,7 @@ def main(data_directory, network_name, encode_fn_name, max_seq_length, batch_siz
         runtime_info["total_training_time"] = training_data_loading_time + training_time
 
         plot_logs(f"{log_dir}/train_log.csv",
-                  f"{log_dir}/val_log.csv", log_dir)
+                  f"{log_dir}/val_log.csv", log_interval, log_dir)
 
     if is_test:
         # Initialize dataset and dataloaders
