@@ -17,14 +17,16 @@ __pycache__/
 # Ignore all contents of the logs directory
 experiments/logs/**
 !experiments/logs/.gitkeep
-!experiments/logs/demo
+!experiments/logs/demo/
+!experiments/logs/demo/** 
 
 experiments/hpc_logs/**
 !experiments/hpc_logs/.gitkeep
 
 experiments/checkpoints/**
 !experiments/checkpoints/.gitkeep
-!experiments/checkpoints/demo
+!experiments/checkpoints/demo/
+!experiments/checkpoints/demo/** 
 
 outputs/** 
 !outputs/.gitkeep
@@ -35,6 +37,7 @@ outputs/**
 data/**
 !data/.gitkeep
 !data/demo/
+!data/demo/**
 
 # ---------------------
 # Scripts
