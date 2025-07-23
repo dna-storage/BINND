@@ -11,7 +11,6 @@ import torch.nn as nn
 import os
 import pandas as pd
 import networks
-import configs.config as config
 import logging
 import time
 import json

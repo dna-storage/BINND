@@ -1,8 +1,26 @@
 [
     {
-        "training_data_loading_time": 24.958756923675537,
-        "training_time": 1738.5516967773438,
-        "total_training_time": 1763.5104537010193,
-        "max_memory_usage(MB)": 5753.7109375
+        "training_data_loading_time": 0.7387657165527344,
+        "training_time": 241.52097749710083,
+        "total_training_time": 242.25974321365356,
+        "max_memory_usage(MB)": 1400.25390625
+    },
+    {
+        "training_data_loading_time": 0.6727473735809326,
+        "training_time": 237.14373540878296,
+        "total_training_time": 237.8164827823639,
+        "max_memory_usage(MB)": 1404.25390625
+    },
+    {
+        "training_data_loading_time": 0.7491738796234131,
+        "training_time": 291.8005704879761,
+        "total_training_time": 292.5497443675995,
+        "max_memory_usage(MB)": 1401.72265625
+    },
+    {
+        "training_data_loading_time": 0.7290818691253662,
+        "training_time": 297.2865116596222,
+        "total_training_time": 298.01559352874756,
+        "max_memory_usage(MB)": 1404.30078125
     }
 ]

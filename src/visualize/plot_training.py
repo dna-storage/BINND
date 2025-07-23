@@ -23,10 +23,10 @@ def plot_logs(train_log_path, val_log_path, log_interval, out_dir):
     plt.plot(train_df.index, train_df['accuracy'], label='Train Accuracy', marker='o', linestyle='-')
     plt.xlabel('Training step')
     plt.ylabel('Accuracy')
-    plt.title('Training Accuracy per Log Interval (Average over {log_interval} Batches)')
+    plt.title(f'Training Accuracy per Log Interval (Average over {log_interval} Batches)')
     # plt.legend()
     plt.grid()
-    plt.savefig(f"{out_dir}/train_accuracy.png")
+    plt.savefig(f"{out_dir}/train_accuracy.png", bbox_inches='tight', dpi=300)
 
     # Validation Loss and Accuracy
     plt.figure(figsize=(10, 5))
@@ -43,7 +43,7 @@ def plot_logs(train_log_path, val_log_path, log_interval, out_dir):
     plt.plot(val_df.index, val_df['accuracy'], label='Validation Accuracy', marker='o', linestyle='-')
     plt.xlabel('Validation step')
     plt.ylabel('Accuracy')
-    plt.title('Validation Accuracy per Log Interval (Average over {log_interval} Batches)')
+    plt.title(f'Validation Accuracy per Log Interval (Average over {log_interval} Batches)')
     # plt.legend()
     plt.grid()
     plt.savefig(f"{out_dir}/val_accuracy.png", bbox_inches='tight', dpi=300)

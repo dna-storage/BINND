@@ -53,7 +53,7 @@ The `BINND` framework supports several CNN architectures. You can select one by 
 The input DNA sequences are processed by specific encoder functions. Ensure the chosen `encoder_name` is compatible with your selected network architecture. 
 
 - **`VALID_ENCODER_NAMES`**:
-    - `"4xn_v2"`: The encoding scheme compatible with BINND's CNNs.
+    - `4xn_v2`: The encoding scheme compatible with BINND's CNNs.
     
     **Example in `run_experiment.py`:**
     
