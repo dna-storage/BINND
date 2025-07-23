@@ -29,12 +29,12 @@ def main(data_directory, network_name, encode_fn_name, max_seq_length, batch_siz
     print(f"Log Directory: {log_dir}")
     print(f"Is Train: {is_train}")
     print(f"Is Test: {is_test}")
-    print(f"Log Interval: {log_interval}")
     
     if is_train:
         print(f"Learning Rate: {learning_rate}")
         print(f"Number of Epochs: {num_epochs}")
         print(f"Patience: {patience}")
+        print(f"Log Interval: {log_interval}")
 
     # Set device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

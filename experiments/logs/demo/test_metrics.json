@@ -1,28 +1,15 @@
 [
     {
-        "accuracy": 0.76717,
-        "AUC": 0.8308139691953795,
-        "F1-score": 0.7352549889135255,
-        "precision_positive": 0.8504800736551361,
-        "recall_positive": 0.6475265371520128,
-        "precision_negative": 0.7160764701137372,
-        "recall_negative": 0.8864789294987018,
-        "true_positive": 32331,
-        "false_positive": 5684,
-        "true_negative": 44386,
-        "false_negative": 17599
-    },
-    {
-        "accuracy": 0.76717,
-        "AUC": 0.8308139691953795,
-        "F1-score": 0.7352549889135255,
-        "precision_positive": 0.8504800736551361,
-        "recall_positive": 0.6475265371520128,
-        "precision_negative": 0.7160764701137372,
-        "recall_negative": 0.8864789294987018,
-        "true_positive": 32331,
-        "false_positive": 5684,
-        "true_negative": 44386,
-        "false_negative": 17599
+        "accuracy": 0.76295,
+        "AUC": 0.8290939212240855,
+        "F1-score": 0.7267088622188405,
+        "precision_positive": 0.8562308131163574,
+        "recall_positive": 0.6312237131984779,
+        "precision_negative": 0.7086135683879033,
+        "recall_negative": 0.894307968843619,
+        "true_positive": 31517,
+        "false_positive": 5292,
+        "true_negative": 44778,
+        "false_negative": 18413
     }
 ]

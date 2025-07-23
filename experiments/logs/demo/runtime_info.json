@@ -1,40 +1,15 @@
 [
     {
-        "training_data_loading_time": 0.7387657165527344,
-        "training_time": 241.52097749710083,
-        "total_training_time": 242.25974321365356,
-        "max_memory_usage(MB)": 1400.25390625
+        "training_data_loading_time": 0.6820571422576904,
+        "training_time": 241.56769013404846,
+        "total_training_time": 242.24974727630615,
+        "max_memory_usage(MB)": 1403.39453125
     },
     {
-        "training_data_loading_time": 0.6727473735809326,
-        "training_time": 237.14373540878296,
-        "total_training_time": 237.8164827823639,
-        "max_memory_usage(MB)": 1404.25390625
-    },
-    {
-        "training_data_loading_time": 0.7491738796234131,
-        "training_time": 291.8005704879761,
-        "total_training_time": 292.5497443675995,
-        "max_memory_usage(MB)": 1401.72265625
-    },
-    {
-        "training_data_loading_time": 0.7290818691253662,
-        "training_time": 297.2865116596222,
-        "total_training_time": 298.01559352874756,
-        "max_memory_usage(MB)": 1404.30078125
-    },
-    {
-        "test_data_loading_time": 0.07450747489929199,
-        "model_loading_time": 0.008137941360473633,
-        "test_time": 4.603860139846802,
-        "total_test_time": 4.686505556106567,
-        "max_memory_usage(MB)": 1038.3671875
-    },
-    {
-        "test_data_loading_time": 0.06917428970336914,
-        "model_loading_time": 0.007560014724731445,
-        "test_time": 4.516355514526367,
-        "total_test_time": 4.593089818954468,
-        "max_memory_usage(MB)": 1038.1015625
+        "test_data_loading_time": 0.0697014331817627,
+        "model_loading_time": 0.0061032772064208984,
+        "test_time": 4.407561302185059,
+        "total_test_time": 4.483366012573242,
+        "max_memory_usage(MB)": 1038.16015625
     }
 ]
