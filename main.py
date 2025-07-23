@@ -25,15 +25,16 @@ def main(data_directory, network_name, encode_fn_name, max_seq_length, batch_siz
     print(f"Encode Function Name: {encode_fn_name}")
     print(f"Max Sequence Length: {max_seq_length}")
     print(f"Batch Size: {batch_size}")
-    print(f"Learning Rate: {learning_rate}")
-    print(f"Number of Epochs: {num_epochs}")
-    print(f"Patience: {patience}")
     print(f"Checkpoint Directory: {checkpoint_dir}")
     print(f"Log Directory: {log_dir}")
     print(f"Is Train: {is_train}")
     print(f"Is Test: {is_test}")
     print(f"Log Interval: {log_interval}")
     
+    if is_train:
+        print(f"Learning Rate: {learning_rate}")
+        print(f"Number of Epochs: {num_epochs}")
+        print(f"Patience: {patience}")
 
     # Set device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

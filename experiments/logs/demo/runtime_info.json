@@ -22,5 +22,19 @@
         "training_time": 297.2865116596222,
         "total_training_time": 298.01559352874756,
         "max_memory_usage(MB)": 1404.30078125
+    },
+    {
+        "test_data_loading_time": 0.07450747489929199,
+        "model_loading_time": 0.008137941360473633,
+        "test_time": 4.603860139846802,
+        "total_test_time": 4.686505556106567,
+        "max_memory_usage(MB)": 1038.3671875
+    },
+    {
+        "test_data_loading_time": 0.06917428970336914,
+        "model_loading_time": 0.007560014724731445,
+        "test_time": 4.516355514526367,
+        "total_test_time": 4.593089818954468,
+        "max_memory_usage(MB)": 1038.1015625
     }
 ]
