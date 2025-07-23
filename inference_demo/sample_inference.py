@@ -2,7 +2,6 @@ import torch
 import numpy as np
 import os
 from networks.cnn import BINND, BINNDLite
-from dataloader.dataset import HTPDataset
 from utils.paths import ROOT_DIR
 MODEL_PATH = f"{ROOT_DIR}/inference_demo/BINND.pt" # Path to the pre-trained model file. Choose between BINND.pt or BINNDLite.pt
 MAX_SEQUENCE_LENGTH = 20 # The current implementation only supports sequences of length 20
