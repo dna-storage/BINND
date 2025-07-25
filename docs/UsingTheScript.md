@@ -1,20 +1,8 @@
 # BINND: Training and Testing Guide
 
-This guide provides detailed instructions on how to train and test the **BINND (Binding and Interaction Neural Network for DNA)** model using the provided scripts. This covers setting up configuration, executing training runs, and performing evaluations.
+This guide provides detailed instructions on how to train and test the **BINND (Binding and Interaction Neural Network for DNA)** model using the provided scripts (`run_experiment.py`). This covers setting up configuration, executing training runs, and performing evaluations. 
 
-<!-- ## Table of Contents
-
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Configuration](https://www.google.com/search?q=%23configuration)
-    - [Network Architectures](https://www.google.com/search?q=%23network-architectures)
-    - [Encoder Functions](https://www.google.com/search?q=%23encoder-functions)
-    - [Paths](https://www.google.com/search?q=%23paths)
-    - [Run Parameters](https://www.google.com/search?q=%23run-parameters)
-- [Running Training](https://www.google.com/search?q=%23running-training)
-- [Running Testing (Inference)](https://www.google.com/search?q=%23running-testing-inference)
-- [Understanding Outputs](https://www.google.com/search?q=%23understanding-outputs)
-- [Troubleshooting](https://www.google.com/search?q=%23troubleshooting) -->
+`example/BINND_demo.ipynb` explains the content of this script in detail.
 
 ## Overview
 
@@ -22,11 +10,10 @@ The primary script for training and testing is `main.py`, which is orchestrated 
 
 ## Prerequisites
 
-Before proceeding, ensure you have completed the [main project setup](https://github.ncsu.edu/dna-based-storage/BINND) (including cloning the repository, creating the Conda environment, and loading custom environment variables). Your Conda environment (`BINND`) must be activated, and `set_env.sh` must be sourced in your current terminal session.
+Before proceeding, ensure you have completed the [main project setup](https://github.ncsu.edu/dna-based-storage/BINND) (including cloning the repository and creating the Conda environment). Your Conda environment (`BINND`) must be activated.
 
 ```bash
 conda activate BINND
-. set_env.sh
 ```
 
 ## Configuration

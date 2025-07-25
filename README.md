@@ -111,8 +111,5 @@ This capability allows you to:
 
 Comprehensive, step-by-step instructions on how to prepare your data, configure training parameters, evaluate your custom BINND model and perform deeper analyses are available in our dedicated 📚 [docs](docs) and [examples](examples) directories.
 
-**Our Recommendation 🌟**
-
-To kick things off and get the most out of this repository, we highly recommend starting with the `BINND_demo.ipynb` notebook located in the `examples` directory.
-
-This demo notebook provides a streamlined walkthrough of the core functionalities and will give you a great foundation before diving into more advanced topics or customizing your own workflows. Happy exploring!
+**Our Recommendation 🌟** 
+To kick things off and get the most out of this repository, we highly recommend starting with the `BINND_demo.ipynb` notebook located in the `examples` directory. This demo notebook provides a streamlined walkthrough of the core functionalities and will give you a great foundation before diving into more advanced topics or customizing your own workflows. Happy exploring!
