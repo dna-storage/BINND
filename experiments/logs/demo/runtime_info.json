@@ -11,5 +11,11 @@
         "test_time": 4.407561302185059,
         "total_test_time": 4.483366012573242,
         "max_memory_usage(MB)": 1038.16015625
+    },
+    {
+        "training_data_loading_time": 0.6888530254364014,
+        "training_time": 238.00606966018677,
+        "total_training_time": 238.69492268562317,
+        "max_memory_usage(MB)": 1402.30859375
     }
 ]

@@ -1,4 +1,4 @@
-# BINND: Training and Testing Guide
+# How to use scripts/run_experiment.py to run BINND 
 
 This guide provides detailed instructions on how to train and test the **BINND (Binding and Interaction Neural Network for DNA)** model using the provided scripts (`run_experiment.py`). This covers setting up configuration, executing training runs, and performing evaluations. 
 
@@ -101,7 +101,7 @@ To train a new model:
 2. Set `is_train = True` and `is_test = False`.
 3. Adjust `network_name`, `encoder_name`, paths, and training parameters (`learning_rate`, `num_epochs`, `patience`, `batch_size`, `log_interval`) as desired.
 4. Save the file.
-5. Ensure your `BINND` Conda environment is activated and `set_env.sh` is sourced.
+5. Ensure your `BINND` Conda environment is activated.
 6. Run the script:
     
     ```bash
@@ -119,7 +119,7 @@ To perform inference using a pre-trained model:
 3. Ensure `checkpoint_dir` points to the location of your `best_model.pt` file.
 4. Adjust `network_name`, `encoder_name`, `data_dir`, `batch_size`, and `log_interval` as needed for testing. (Note: `learning_rate`, `num_epochs`, `patience` are ignored during testing.)
 5. Save the file.
-6. Ensure your `BINND` Conda environment is activated and `set_env.sh` is sourced.
+6. Ensure your `BINND` Conda environment is activated.
 7. Run the script:
     
     ```bash
