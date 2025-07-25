@@ -6,7 +6,7 @@ set -e
 ENV_NAME="BINND" # Name of your Conda environment
 YML_FILE="BINND.yml"
 REQUIREMENTS_FILE="requirements.txt"
-SET_ENV_SCRIPT="set_env.sh" # Name of your environment setup script
+# SET_ENV_SCRIPT="set_env.sh" # Name of your environment setup script
 
 echo "--- Starting Environment Setup for $ENV_NAME ---"
 
@@ -65,11 +65,17 @@ else
     echo "Other pip packages installed."
 fi
 
+
+# 7. Install current project in editable mode
+echo "--- Installing current project in editable mode (pip install -e .) ---"
+pip install -e .
+echo "Project installed in editable mode."
+
 echo "--- Setup Complete! ---"
 echo "Your environment '$ENV_NAME' is ready."
 echo "To use it, you need to activate it in your terminal for future sessions:"
 echo "   conda activate $ENV_NAME"
-echo "   . $SET_ENV_SCRIPT"
+# echo "   . $SET_ENV_SCRIPT"
 echo "Then you can run your inference script:"
 echo "   cd inference_demo"
 echo "   python sample_inference.py"
