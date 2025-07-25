@@ -84,7 +84,7 @@ Your project requires specific environment variables (like `PYTHONPATH`) to be s
 
 - **`. set_env.sh`**: This command loads the necessary environment variables for your project. The `.` (dot) at the beginning is important! -->
 
-## Using BINND for Prediction
+## Using BINND for Prediction 🚀
 
 Now that your environment is fully set up and activated, you're ready to leverage BINND's predictive power. The `inference_demo` directory provides an example of how to use the trained model to predict DNA-DNA interactions.
 
@@ -109,4 +109,10 @@ This capability allows you to:
 - Benchmark BINND's performance on your own data.
 - Perform deeper analyses
 
-Comprehensive, step-by-step instructions on how to prepare your data, configure training parameters, evaluate your custom BINND model and perform deeper analyses are available in our dedicated 📚 [docs](./docs) directory.
+Comprehensive, step-by-step instructions on how to prepare your data, configure training parameters, evaluate your custom BINND model and perform deeper analyses are available in our dedicated 📚 [docs](docs) and [examples](examples) directories.
+
+**Our Recommendation 🌟**
+
+To kick things off and get the most out of this repository, we highly recommend starting with the `BINND_demo.ipynb` notebook located in the `examples` directory.
+
+This demo notebook provides a streamlined walkthrough of the core functionalities and will give you a great foundation before diving into more advanced topics or customizing your own workflows. Happy exploring!
