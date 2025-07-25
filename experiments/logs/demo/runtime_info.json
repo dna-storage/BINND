@@ -1,9 +1,0 @@
-[
-    {
-        "test_data_loading_time": 0.07320785522460938,
-        "model_loading_time": 0.008719205856323242,
-        "test_time": 4.550529718399048,
-        "total_test_time": 4.6324567794799805,
-        "max_memory_usage(MB)": 1069.44921875
-    }
-]
