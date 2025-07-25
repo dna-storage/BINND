@@ -15,7 +15,7 @@ This repository contains the official implementation of **BINND (Binding and Int
 -   [Expanding BINND](#expanding-binnd)
 
 
-## Project Overview
+## Project Overview ✨
 
 The ability to predict the interactions between DNA molecules is broadly important. It underlies core research methods in molecular and cell biology, drives the accuracy of disease detection and diagnostic tools, supports high throughput bioengineering, and could unlock next generation technologies like DNA-based data storage and computation. Here, we present BINND - Binding and Interaction Neural Network for DNA. BINND comprises an ultra-high throughput wet lab platform that measures millions of DNA-DNA interactions and a deep learning model that attains accuracies greater than 80% and generalizability across a diverse sequence space and varied interaction environments. Our framework leverages a Convolutional Neural Network (CNN) architecture to learn complex binding patterns directly from raw DNA sequences. In addition to its leading accuracy, BINND achieves speeds 2 orders of magnitude greater than current state-of-the-art models.
 
@@ -23,7 +23,7 @@ The ability to predict the interactions between DNA molecules is broadly importa
 
 To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components.
 
-### Prerequisites
+### Prerequisites ⚙️
 
 Before you begin, ensure you have the following installed on your system:
 
@@ -54,7 +54,7 @@ make init
 
 - **What to expect:** This command will print various messages as it downloads and installs packages. This process might take several minutes, depending on your internet connection and computer speed.
 - **Important:** If you see any `ERROR` messages, please read them carefully. ⚠️ Common issues include Conda not being installed, or `BINND.yml` or `requirements.txt` files being missing.
-- **When to re-run `make init`:** You generally do not need to run make init again once it has completed successfully. However, you might consider re-running it if:
+- **💡 When to re-run `make init`:** You generally do not need to run make init again once it has completed successfully. However, you might consider re-running it if:
 
     - The `BINND.yml` or `requirements.txt` files are updated in the repository (e.g., to add new dependencies).
 
@@ -107,5 +107,6 @@ This capability allows you to:
 - Explore new deep learning architectures and encoding schemes
 - Measure time and memory consumption of different stages of the deep learning pipeline
 - Benchmark BINND's performance on your own data.
+- Perform deeper analyses
 
-Comprehensive, step-by-step instructions on how to prepare your data, configure training parameters, evaluate your custom BINND model and perform deeper analyses are available in our dedicated 📚 [Wiki](https://github.ncsu.edu/dna-based-storage/BINND/wiki/BINND:-Training-and-Testing-Guide).
+Comprehensive, step-by-step instructions on how to prepare your data, configure training parameters, evaluate your custom BINND model and perform deeper analyses are available in our dedicated 📚 [docs](./docs) directory.
