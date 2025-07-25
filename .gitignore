@@ -3,7 +3,7 @@
 # ---------------------
 __pycache__/
 .ipynb_checkpoints/
-
+BINND.egg-info/
 # ---------------------
 # IDEs and Editors
 # ---------------------
