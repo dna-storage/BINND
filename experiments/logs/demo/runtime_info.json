@@ -1,21 +1,9 @@
 [
     {
-        "training_data_loading_time": 0.6820571422576904,
-        "training_time": 241.56769013404846,
-        "total_training_time": 242.24974727630615,
-        "max_memory_usage(MB)": 1403.39453125
-    },
-    {
-        "test_data_loading_time": 0.0697014331817627,
-        "model_loading_time": 0.0061032772064208984,
-        "test_time": 4.407561302185059,
-        "total_test_time": 4.483366012573242,
-        "max_memory_usage(MB)": 1038.16015625
-    },
-    {
-        "training_data_loading_time": 0.6888530254364014,
-        "training_time": 238.00606966018677,
-        "total_training_time": 238.69492268562317,
-        "max_memory_usage(MB)": 1402.30859375
+        "test_data_loading_time": 0.07320785522460938,
+        "model_loading_time": 0.008719205856323242,
+        "test_time": 4.550529718399048,
+        "total_test_time": 4.6324567794799805,
+        "max_memory_usage(MB)": 1069.44921875
     }
 ]

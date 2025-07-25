@@ -18,7 +18,7 @@ VALID_ENCODER_NAMES = (
 
 print(f"Root directory is: {ROOT_DIR}")
 
-data_dir = os.path.join(ROOT_DIR, "data", "htp_oct_2024_downsampled_26mill")
+data_dir = os.path.join(ROOT_DIR, "data", "demo")
 checkpoint_dir = os.path.join(ROOT_DIR, "experiments", "checkpoints", "demo")
 log_dir = os.path.join(ROOT_DIR, "experiments", "logs", "demo")
 
@@ -42,8 +42,8 @@ if encoder_name not in VALID_ENCODER_NAMES:
     raise ValueError(
         f"Invalid encoder name: {encoder_name}. Valid options are: {VALID_ENCODER_NAMES}")
 
-is_train = True  # Set to True for training, False for inference
-is_test = False  # Set to True for testing (inference)
+is_train = False  # Set to True for training, False for inference
+is_test = True  # Set to True for testing (inference)
 
 max_seq_length = 20
 batch_size = 512
@@ -82,5 +82,5 @@ cmd = " ".join(cmd_args)
 
 print(f"Running command:\n{cmd}")
 
-# os.system(cmd)
+os.system(cmd)
 
