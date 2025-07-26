@@ -19,7 +19,7 @@ BINND.egg-info/
 experiments/logs/**
 !experiments/logs/.gitkeep
 !experiments/logs/demo/
-!experiments/logs/demo/** 
+!experiments/logs/demo/data.csv 
 
 experiments/hpc_logs/**
 !experiments/hpc_logs/.gitkeep
@@ -28,6 +28,10 @@ experiments/checkpoints/**
 !experiments/checkpoints/.gitkeep
 !experiments/checkpoints/demo/
 !experiments/checkpoints/demo/** 
+!experiments/checkpoints/BINND/
+!experiments/checkpoints/BINND/** 
+!experiments/checkpoints/BINNDLite/
+!experiments/checkpoints/BINNDLite/** 
 
 outputs/** 
 !outputs/.gitkeep
