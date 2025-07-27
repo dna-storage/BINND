@@ -23,7 +23,7 @@ The ability to predict the interactions between DNA molecules is broadly importa
 
 To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components.
 
-### Prerequisites ⚙️
+### Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
 
