@@ -1,16 +1,16 @@
 # How to use scripts/run_experiment.py to run BINND 
 
-This guide provides detailed instructions on how to train and test the **BINND (Binding and Interaction Neural Network for DNA)** model using the provided scripts (`run_experiment.py`). This covers setting up configuration, executing training runs, and performing evaluations. 
+This guide provides detailed instructions on how to train and test a BINND-like model using the provided scripts (`run_experiment.py`). This covers setting up configuration, executing training runs, and performing evaluations. 
 
 `example/BINND_demo.ipynb` explains the content of this script in detail.
 
 ## Overview
 
-The primary script for training and testing is `main.py`, which is orchestrated by a separate configuration script `run_experiment.py`  found in the sub-directory `scripts`. This guide will walk you through setting up the parameters for your experiments and executing them.
+The primary script for training and testing is `main.py`, which is orchestrated by a separate configuration script `run_experiment.py`  found in the `scripts` directory. This guide will walk you through setting up the parameters for your experiments and executing them.
 
 ## Prerequisites
 
-Before proceeding, ensure you have completed the [main project setup](https://github.ncsu.edu/dna-based-storage/BINND) (including cloning the repository and creating the Conda environment). Your Conda environment (`BINND`) must be activated.
+Before proceeding, ensure you have completed the [main project setup](../) (including cloning the repository and creating the Conda environment). Your Conda environment (`BINND`) must be activated.
 
 ```bash
 conda activate BINND
@@ -51,7 +51,7 @@ The input DNA sequences are processed by specific encoder functions. Ensure the 
 
 ### Paths
 
-The script defines key directories for data, model checkpoints, and logs. These are relative to your `ROOT_DIR` (the project's main directory).
+The script defines key directories for data, model checkpoints, and logs.
 
 - **`data_dir`**: Location of your input dataset.
     - **Expected Structure:** This directory should contain the following CSV files:
@@ -75,7 +75,7 @@ The script defines key directories for data, model checkpoints, and logs. These 
     **Example in `run_experiment.py`:**
     
     ```bash
-    data_dir = os.path.join(ROOT_DIR, "data", "my_custom_dataset")
+    data_dir = os.path.join(ROOT_DIR, "data", "demo")
     ```
     
 
