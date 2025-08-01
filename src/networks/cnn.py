@@ -8,11 +8,9 @@ class GeneralCNNBinaryClassifier(nn.Module):
     A general purpose Convolutional Neural Network class with both 2D and 1D convolutions.
 
     This class allows for flexible definition of:
-    - 2D Convolutional layers (Conv2d, ReLU, BatchNorm2d, Dropout2d)
-    - 2D Pooling layers (MaxPool2d, AvgPool2d)
-    - 1D Convolutional layers (Conv1d, ReLU, BatchNorm1d, Dropout)
-    - 1D Pooling layers (MaxPool1d, AvgPool1d)
-    - Fully Connected / Linear layers (Linear, ReLU, Dropout)
+    - 2D Convolutional layers 
+    - 1D Convolutional layers
+    - Fully Connected / Linear layers
 
     The architecture is defined by passing lists of dictionaries for each
     block type, allowing for an arbitrary number of layers within each block.
@@ -21,45 +19,155 @@ class GeneralCNNBinaryClassifier(nn.Module):
     def __init__(self,
                  input_channels,
                  conv2d_layers_config,
-                 pooling2d_layers_config=None,
                  conv1d_layers_config=None,
-                 pooling1d_layers_config=None,
                  linear_layers_config=None,
                  ):
 
         super(GeneralCNNBinaryClassifier, self).__init__()
 
-    
+        def _get_activation(config):
+            activation_map = {
+                'relu': nn.ReLU,
+                'leakyrelu': nn.LeakyReLU,
+                'elu': nn.ELU,
+                'gelu': nn.GELU,
+                'tanh': nn.Tanh,
+                'sigmoid': nn.Sigmoid,
+                # Add more as needed
+            }
+
+            activation = config.get('activation')
+            if activation:
+                activation = activation.lower()
+                if activation in activation_map:
+                    return activation_map[activation]()
+                else:
+                    raise ValueError(
+                        f"Unsupported activation: {activation}")
+            else:
+                return None
+
         # --- Build 2D Convolutional Block ---
         conv2d_modules = []
-        current_in_channels_2d = input_channels
+        current_in_channels = input_channels
         for config in conv2d_layers_config:
             out_channels = config['out_channels']
             kernel_size = config['kernel_size']
             stride = config.get('stride', 1)
             padding = config.get('padding', 0)
 
-            conv2d_modules.append(nn.Conv2d(in_channels=current_in_channels_2d,
+            conv2d_modules.append(nn.Conv2d(in_channels=current_in_channels,
                                             out_channels=out_channels,
                                             kernel_size=kernel_size,
                                             stride=stride,
                                             padding=padding)
                                   )
-            conv2d_modules.append(nn.ReLU())
-            
-            if ('batch_norm' in config and config['batch_norm'] == True):
+
+            activation_layer = _get_activation(config)
+            if activation_layer:
+                conv2d_modules.append(activation_layer)
+
+            if config.get('batch_norm'):
                 conv2d_modules.append(nn.BatchNorm2d(out_channels))
-            
-            if ('dropout' in config and config['dropout'] > 0):
+
+            dropout = config.get('dropout', 0)
+            if dropout > 0:
                 conv2d_modules.append(nn.Dropout2d(config['dropout']))
-            
-            current_in_channels_2d = out_channels
-            
+
+            current_in_channels = out_channels
+
         self.conv2d_block = nn.Sequential(*conv2d_modules)
-        
-    
-        
-            
+
+        # --- Build 1D Convolutional Block ---
+        conv1d_modules = []
+        if conv1d_layers_config:
+            for config in conv1d_layers_config:
+                out_channels = config['out_channels']
+                kernel_size = config['kernel_size']
+                stride = config.get('stride', 1)
+                padding = config.get('padding', 0)
+
+                conv1d_modules.append(nn.Conv1d(in_channels=current_in_channels,
+                                                out_channels=out_channels,
+                                                kernel_size=kernel_size,
+                                                stride=stride,
+                                                padding=padding))
+
+                activation_layer = _get_activation(config)
+                if activation_layer:
+                    conv1d_modules.append(activation_layer)
+
+                if config.get('batch_norm'):
+                    conv1d_modules.append(nn.BatchNorm1d(out_channels))
+
+                dropout = config.get('dropout', 0)
+                if dropout > 0:
+                    conv1d_modules.append(nn.Dropout(config['dropout']))
+
+                current_in_channels = out_channels
+
+        self.conv1d_block = nn.Sequential(
+            *conv1d_modules) if conv1d_modules else nn.Identity()
+
+        # --- Build Fully Connected (Linear) Block ---
+
+        linear_modules = []
+        if linear_layers_config:
+
+            with torch.no_grad():
+                # Shape: (batch_size=1, channels=1, height=4, width=40)
+                dummy_input = torch.zeros(1, 1, 4, 40)
+                out = self.conv2d_block(dummy_input)
+                out = out.squeeze(2)  # Remove height dim (1)
+                out = self.conv1d_block(out)
+                self.flattened_size = out.view(1, -1).shape[1]
+
+            current_in_features = self.flattened_size
+
+            for config in linear_layers_config:
+                out_features = config['out_features']
+
+                linear_modules.append(nn.Linear(in_features=current_in_features,
+                                                out_features=out_features))
+
+                activation_layer = _get_activation(config)
+                if activation_layer:
+                    linear_modules.append(activation_layer)
+
+                if config.get('batch_norm'):
+                    linear_modules.append(nn.BatchNorm1d(out_features))
+
+                dropout = config.get('dropout', 0)
+                if dropout > 0:
+                    linear_modules.append(nn.Dropout(config['dropout']))
+
+                current_in_features = out_features
+
+        self.linear_block = nn.Sequential(
+            *linear_modules) if linear_modules else nn.Identity()
+
+        # Sigmoid Activation: Converts logits to probability scores
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, x):
+        x = self.conv2d_block(x)
+
+        # Assuming height becomes 1, remove the third dimension (squeeze along dimension 2)
+        # to reshape the output for 1D convolutions
+        x = x.squeeze(2)
+        x = self.conv1d_block(x)
+
+        # Flatten the tensor for the fully connected layers
+        # Reshapes to (batch_size, flattened_features)
+        x = x.view(x.size(0), -1)
+
+        # Pass through the fully connected (linear) block
+        x = self.linear_block(x)
+
+        # Apply sigmoid activation for binary classification
+        x = self.sigmoid(x)
+
+        return x
 
 
 class CNNBinaryClassifier2V1(nn.Module):
@@ -303,9 +411,20 @@ class BINND(nn.Module):
 
 if __name__ == "__main__":
     conv2d_config = [
-        {'out_channels': 32, 'kernel_size': (4, 9), 'batch_norm': True, 'dropout': 0.2}, # Kernel (4,9) on H=4 input -> H=1 output
-        {'out_channels': 64, 'kernel_size': (1, 5), 'padding': (0, 0)}, # Example: another 2D layer reducing width
+        {'out_channels': 256, 'kernel_size': (
+            4, 9), 'activation': 'ReLU', 'batch_norm': True, 'dropout': 0.3},
     ]
-    
-    model = GeneralCNNBinaryClassifier(1, conv2d_layers_config=conv2d_config)
+
+    conv1d_config = [
+        {'out_channels': 128, 'kernel_size': (
+            7), 'activation': 'ReLU', 'batch_norm': True, 'dropout': 0.168},
+    ]
+
+    linear_config = [
+        {'out_features': 256},
+        {'out_features': 1}
+    ]
+
+    model = GeneralCNNBinaryClassifier(
+        1, conv2d_layers_config=conv2d_config, conv1d_layers_config=conv1d_config, linear_layers_config=linear_config)
     print(model)
