@@ -54,7 +54,7 @@ def train_model(model, train_dataloader, val_dataloader, criterion, optimizer, d
             optimizer.step()
 
             # Compute accuracy
-            preds = (outputs.squeeze() >= 0.5).float()  # Convert logits to binary predictions
+            preds = (outputs.squeeze() >= 0.5).float()  # Convert to binary predictions
             correct = (preds == labels).sum().item()
             
             # Accumulate loss and accuracy

@@ -2,7 +2,138 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+class BINND(nn.Module):
+    def __init__(self):
+        super(BINND, self).__init__()
 
+        # 2D Convolutional Block: Extracts spatial features from input
+        self.conv2d_block = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=1024,
+                      kernel_size=(4, 9)),  # Large feature extraction
+            nn.ReLU(),  # Non-linearity
+            # Normalize activations to stabilize training
+            nn.BatchNorm2d(1024),
+            nn.Dropout2d(0.30)  # Regularization to prevent overfitting
+        )
+
+        # 1D Convolutional Block: Further refines extracted features
+        self.conv1d_block = nn.Sequential(
+            nn.Conv1d(in_channels=1024, out_channels=256, kernel_size=7),
+            nn.ReLU(),
+            nn.BatchNorm1d(256),
+            nn.Dropout(0.168),
+
+            nn.Conv1d(in_channels=256, out_channels=512, kernel_size=5),
+            nn.ReLU(),
+            nn.BatchNorm1d(512),
+            nn.Dropout(0.138),
+
+            nn.Conv1d(in_channels=512, out_channels=256, kernel_size=5),
+            nn.ReLU(),
+            nn.BatchNorm1d(256),
+            nn.Dropout(0.07),
+
+            nn.Conv1d(in_channels=256, out_channels=256, kernel_size=3),
+            nn.ReLU(),
+            nn.BatchNorm1d(256),
+            nn.Dropout(0.426)
+        )
+
+        # Fully Connected (Linear) Block: Maps extracted features to output
+        self.lin_block = nn.Sequential(
+            # Flattened input projected to 256 neurons
+            nn.Linear(256 * 16, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),  # Further reduction
+            nn.ReLU(),
+            nn.Dropout(0.2),  # Dropout to prevent overfitting
+            # Final output neuron (for binary classification)
+            nn.Linear(128, 1)
+        )
+
+        # Sigmoid Activation: Converts logits to probability scores
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, x):
+        x = self.conv2d_block(x)
+
+        # Remove the third dimension (squeeze along dimension 2)
+        # to reshape the output for 1D convolutions
+        x = self.conv1d_block(torch.squeeze(x, 2))
+
+        # Flatten the tensor for the fully connected layers
+        # Reshapes to (batch_size, flattened_features)
+        x = x.view(x.size(0), -1)
+
+        # Pass through the fully connected (linear) block
+        x = self.lin_block(x)
+
+        # Apply sigmoid activation for binary classification
+        x = self.sigmoid(x)
+
+        return x
+    
+class BINNDLite(nn.Module):
+    def __init__(self):
+        super(BINNDLite, self).__init__()
+
+        # 2D Convolutional Block: Extracts spatial features from input
+        self.conv2d_block = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=256,
+                      kernel_size=(4, 9)),  # Large feature extraction
+            nn.ReLU(),  # Non-linearity
+            nn.BatchNorm2d(256),  # Normalize activations to stabilize training
+            nn.Dropout2d(0.30)  # Regularization to prevent overfitting
+        )
+
+        # 1D Convolutional Block: Further refines extracted features
+        self.conv1d_block = nn.Sequential(
+            nn.Conv1d(in_channels=256, out_channels=128, kernel_size=7),
+            nn.ReLU(),
+            nn.BatchNorm1d(128),
+            nn.Dropout(0.168),
+        )
+
+        # 👇 Dummy forward pass to compute the flattened size
+        with torch.no_grad():
+            # Shape: (batch_size=1, channels=1, height=4, width=40)
+            dummy_input = torch.zeros(1, 1, 4, 40)
+            out = self.conv2d_block(dummy_input)
+            out = out.squeeze(2)  # Remove height dim (1)
+            out = self.conv1d_block(out)
+            self.flattened_size = out.view(1, -1).shape[1]
+
+        # Fully Connected (Linear) Block: Maps extracted features to output
+        self.lin_block = nn.Sequential(
+            # Flattened input projected to 256 neurons
+            nn.Linear(self.flattened_size, 256),
+            nn.ReLU(),
+            # Final output neuron (for binary classification)
+            nn.Linear(256, 1)
+        )
+
+        # Sigmoid Activation: Converts logits to probability scores
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, x):
+        x = self.conv2d_block(x)
+
+        # Remove the third dimension (squeeze along dimension 2)
+        # to reshape the output for 1D convolutions
+        x = self.conv1d_block(torch.squeeze(x, 2))
+
+        # Flatten the tensor for the fully connected layers
+        # Reshapes to (batch_size, flattened_features)
+        x = x.view(x.size(0), -1)
+
+        # Pass through the fully connected (linear) block
+        x = self.lin_block(x)
+
+        # Apply sigmoid activation for binary classification
+        x = self.sigmoid(x)
+
+        return x
+    
 class GeneralCNNBinaryClassifier(nn.Module):
     """_summary_
     A general purpose Convolutional Neural Network class with both 2D and 1D convolutions.
@@ -274,139 +405,6 @@ class CNNBinaryClassifierV3(nn.Module):
 
         return x
 
-
-class BINNDLite(nn.Module):
-    def __init__(self):
-        super(BINNDLite, self).__init__()
-
-        # 2D Convolutional Block: Extracts spatial features from input
-        self.conv2d_block = nn.Sequential(
-            nn.Conv2d(in_channels=1, out_channels=256,
-                      kernel_size=(4, 9)),  # Large feature extraction
-            nn.ReLU(),  # Non-linearity
-            nn.BatchNorm2d(256),  # Normalize activations to stabilize training
-            nn.Dropout2d(0.30)  # Regularization to prevent overfitting
-        )
-
-        # 1D Convolutional Block: Further refines extracted features
-        self.conv1d_block = nn.Sequential(
-            nn.Conv1d(in_channels=256, out_channels=128, kernel_size=7),
-            nn.ReLU(),
-            nn.BatchNorm1d(128),
-            nn.Dropout(0.168),
-        )
-
-        # 👇 Dummy forward pass to compute the flattened size
-        with torch.no_grad():
-            # Shape: (batch_size=1, channels=1, height=4, width=40)
-            dummy_input = torch.zeros(1, 1, 4, 40)
-            out = self.conv2d_block(dummy_input)
-            out = out.squeeze(2)  # Remove height dim (1)
-            out = self.conv1d_block(out)
-            self.flattened_size = out.view(1, -1).shape[1]
-
-        # Fully Connected (Linear) Block: Maps extracted features to output
-        self.lin_block = nn.Sequential(
-            # Flattened input projected to 256 neurons
-            nn.Linear(self.flattened_size, 256),
-            nn.ReLU(),
-            # Final output neuron (for binary classification)
-            nn.Linear(256, 1)
-        )
-
-        # Sigmoid Activation: Converts logits to probability scores
-        self.sigmoid = nn.Sigmoid()
-
-    def forward(self, x):
-        x = self.conv2d_block(x)
-
-        # Remove the third dimension (squeeze along dimension 2)
-        # to reshape the output for 1D convolutions
-        x = self.conv1d_block(torch.squeeze(x, 2))
-
-        # Flatten the tensor for the fully connected layers
-        # Reshapes to (batch_size, flattened_features)
-        x = x.view(x.size(0), -1)
-
-        # Pass through the fully connected (linear) block
-        x = self.lin_block(x)
-
-        # Apply sigmoid activation for binary classification
-        x = self.sigmoid(x)
-
-        return x
-
-
-class BINND(nn.Module):
-    def __init__(self):
-        super(BINND, self).__init__()
-
-        # 2D Convolutional Block: Extracts spatial features from input
-        self.conv2d_block = nn.Sequential(
-            nn.Conv2d(in_channels=1, out_channels=1024,
-                      kernel_size=(4, 9)),  # Large feature extraction
-            nn.ReLU(),  # Non-linearity
-            # Normalize activations to stabilize training
-            nn.BatchNorm2d(1024),
-            nn.Dropout2d(0.30)  # Regularization to prevent overfitting
-        )
-
-        # 1D Convolutional Block: Further refines extracted features
-        self.conv1d_block = nn.Sequential(
-            nn.Conv1d(in_channels=1024, out_channels=256, kernel_size=7),
-            nn.ReLU(),
-            nn.BatchNorm1d(256),
-            nn.Dropout(0.168),
-
-            nn.Conv1d(in_channels=256, out_channels=512, kernel_size=5),
-            nn.ReLU(),
-            nn.BatchNorm1d(512),
-            nn.Dropout(0.138),
-
-            nn.Conv1d(in_channels=512, out_channels=256, kernel_size=5),
-            nn.ReLU(),
-            nn.BatchNorm1d(256),
-            nn.Dropout(0.07),
-
-            nn.Conv1d(in_channels=256, out_channels=256, kernel_size=3),
-            nn.ReLU(),
-            nn.BatchNorm1d(256),
-            nn.Dropout(0.426)
-        )
-
-        # Fully Connected (Linear) Block: Maps extracted features to output
-        self.lin_block = nn.Sequential(
-            # Flattened input projected to 256 neurons
-            nn.Linear(256 * 16, 256),
-            nn.ReLU(),
-            nn.Linear(256, 128),  # Further reduction
-            nn.ReLU(),
-            nn.Dropout(0.2),  # Dropout to prevent overfitting
-            # Final output neuron (for binary classification)
-            nn.Linear(128, 1)
-        )
-
-        # Sigmoid Activation: Converts logits to probability scores
-        self.sigmoid = nn.Sigmoid()
-
-    def forward(self, x):
-        x = self.conv2d_block(x)
-
-        # Remove the third dimension (squeeze along dimension 2)
-        # to reshape the output for 1D convolutions
-        x = self.conv1d_block(torch.squeeze(x, 2))
-
-        # Flatten the tensor for the fully connected layers
-        # Reshapes to (batch_size, flattened_features)
-        x = x.view(x.size(0), -1)
-
-        # Pass through the fully connected (linear) block
-        x = self.lin_block(x)
-
-        # Apply sigmoid activation for binary classification
-        x = self.sigmoid(x)
-
-        return x
 
 
 if __name__ == "__main__":
