@@ -40,12 +40,12 @@ def split_predictions_based_on_beadprimer(test_data_path, prediction_data_path, 
 
 
 if __name__ == '__main__':
-    # stratified_split_dataset("/gpfs_backup/tuck_data/gbrihad/htp/data/ml_datasets/insilico_dg/data.csv",
-    #                          "Label",
-    #                          "/gpfs_backup/tuck_data/gbrihad/htp/data/ml_datasets/insilico_dg",
-    #                          test_size=0.1,
-    #                          val_size=0.1)
+    stratified_split_dataset("/gpfs_backup/tuck_data/gbrihad/DNABindML/data/demo/data.csv",
+                             "Label",
+                             "/gpfs_backup/tuck_data/gbrihad/DNABindML/data/demo",
+                             test_size=0.1,
+                             val_size=0.1)
     #=============================================================================================================
-    split_predictions_based_on_beadprimer("/gpfs_backup/tuck_data/gbrihad/htp/data/ml_datasets/htp_oct_2024_cond2/balanced/merged/test.csv",
-                                          "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_log.csv",
-                                          "/gpfs_backup/tuck_data/gbrihad/DNABindML/outputs/prediction_beadprimer_split")
+    # split_predictions_based_on_beadprimer("/gpfs_backup/tuck_data/gbrihad/htp/data/ml_datasets/htp_oct_2024_cond2/balanced/merged/test.csv",
+    #                                       "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/BINND_0.0_encoder4xn_v2_htp_oct_2024_cond2/test_log.csv",
+    #                                       "/gpfs_backup/tuck_data/gbrihad/DNABindML/outputs/prediction_beadprimer_split")

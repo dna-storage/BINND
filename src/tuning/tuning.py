@@ -6,7 +6,7 @@ import os
 from ray import train, tune
 from ray.tune.schedulers import ASHAScheduler
 from networks.cnn import GeneralCNNBinaryClassifier
-from src.dataloader.dataset import HTPDataset
+from dataloader.dataset import HTPDataset
 
 
 def main(data_directory, tune_log_dir, max_num_epochs=6, patience=2, reduction_factor=2, num_trials=10):
@@ -16,24 +16,24 @@ def main(data_directory, tune_log_dir, max_num_epochs=6, patience=2, reduction_f
 
     conv2d_config = [
         {
-            'out_channels': tune.choice([16, 32, 64, 128, 256, 512]),
-            'kernel_size': (4, tune.randint(2, 12)),
+            'out_channels': tune.choice([256]),
+            'kernel_size': (4, tune.randint(9, 10)),
             'activation': 'ReLU',
             'batch_norm': True,
-            'dropout': tune.uniform(0.0, 0.5)
+            'dropout': tune.uniform(0.3, 0.31)
         },
     ]
     
     conv1d_config = [
-        {'out_channels': tune.choice([16, 32, 64, 128, 256]), 
-         'kernel_size': (tune.randint(2, 12)), 
+        {'out_channels': tune.choice([128]), 
+         'kernel_size': (tune.randint(7, 8)), 
          'activation': 'ReLU', 
          'batch_norm': True, 
-         'dropout': tune.uniform(0.0, 0.5)},
+         'dropout': tune.uniform(0.168, 0.17)},
     ]
     
     linear_config = [
-        {'out_features': tune.choice([16, 32, 64, 128, 256])},
+        {'out_features': tune.choice([256])},
         {'out_features': 1}
     ]
 
@@ -42,8 +42,9 @@ def main(data_directory, tune_log_dir, max_num_epochs=6, patience=2, reduction_f
         'conv2d_config': conv2d_config,
         'conv1d_config': conv1d_config,
         'linear_config': linear_config,
-        'lr': tune.loguniform(1e-4, 1e-1),
-        'batch_size': tune.choice([32, 64, 128, 256]),
+        # 'lr': tune.loguniform(1e-4, 1e-1),
+        'lr':tune.choice([0.0004]),
+        'batch_size': tune.choice([128, 256, 512, 1024]),
         'encode_fn_name': tune.choice(['4xn_v2'])
     }
 

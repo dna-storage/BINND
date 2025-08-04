@@ -1,12 +1,12 @@
 import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from src.dataloader.dataset import HTPDataset
-from src.training.train import train_model
-from src.training.test import test_model
-from src.visualize.plot_training import plot_logs
-from src.training import evaluation_metrics
-from src.utils.stats import get_max_memory_usage_mb
+from dataloader.dataset import HTPDataset
+from training.train import train_model
+from training.test import test_model
+from visualize.plot_training import plot_logs
+from training import evaluation_metrics
+from utils.stats import get_max_memory_usage_mb
 import torch.nn as nn
 import os
 import pandas as pd

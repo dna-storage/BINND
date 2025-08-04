@@ -42,7 +42,7 @@ if encoder_name not in VALID_ENCODER_NAMES:
     raise ValueError(
         f"Invalid encoder name: {encoder_name}. Valid options are: {VALID_ENCODER_NAMES}")
 
-is_train = False  # Set to True for training, False for inference
+is_train = True  # Set to True for training, False for inference
 is_test = True  # Set to True for testing (inference)
 
 max_seq_length = 20
