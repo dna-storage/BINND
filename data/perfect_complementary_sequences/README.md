@@ -1,0 +1,1 @@
+The file `data/perfect_complementary_sequences/test.csv` contains 1 million perfect complementary sequence pairs, each 20 base pairs in length. These pairs were used for the analyses presented in the paper.
