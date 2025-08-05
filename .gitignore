@@ -43,6 +43,8 @@ data/**
 !data/.gitkeep
 !data/demo/
 !data/demo/**
+!data/perfect_complementary_sequences/
+!data/perfect_complementary_sequences/**
 
 # ---------------------
 # Scripts
