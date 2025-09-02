@@ -52,6 +52,7 @@ data/**
 scripts/hpc_scripts.py
 
 # ---------------------
-# Scratch source files
+# Source files
 # ---------------------
 src/scratchpad.py
+src/explainability/**

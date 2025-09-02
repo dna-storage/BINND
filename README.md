@@ -40,7 +40,7 @@ Follow these steps in your terminal or command prompt:
 First, get a copy of this project onto your computer:
 
 ```bash
-git clone https://github.ncsu.edu/dna-based-storage/BINND.git
+git clone https://github.com/dna-storage/BINND.git
 cd BINND
 ```
 

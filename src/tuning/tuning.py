@@ -42,7 +42,7 @@ def train_binnd(config, data_directory, max_num_epochs, max_seq_length, device):
             inputs, labels = sample_batched['matrix'].to(device), sample_batched['label'].to(device)
             
             optimizer.zero_grad()
-            outputs = model(inputs)
+            _, outputs = model(inputs)
             loss = criterion(outputs.squeeze(), labels)
             loss.backward()
             optimizer.step()
@@ -54,7 +54,7 @@ def train_binnd(config, data_directory, max_num_epochs, max_seq_length, device):
         for i_batch, sample_batched in enumerate(val_dataloader):
             inputs, labels = sample_batched['matrix'].to(device), sample_batched['label'].to(device)
             
-            outputs = model(inputs)
+            _, outputs = model(inputs)
             loss = criterion(outputs.squeeze(), labels)
             valid_loss += loss.item() * inputs.size(0)
 

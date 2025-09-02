@@ -66,12 +66,13 @@ class BINND(nn.Module):
         x = x.view(x.size(0), -1)
 
         # Pass through the fully connected (linear) block
-        x = self.lin_block(x)
+        logits = self.lin_block(x)
 
         # Apply sigmoid activation for binary classification
-        x = self.sigmoid(x)
+        preds = self.sigmoid(logits)
 
-        return x
+        return logits, preds
+
     
 class BINNDLite(nn.Module):
     def __init__(self):
@@ -127,12 +128,13 @@ class BINNDLite(nn.Module):
         x = x.view(x.size(0), -1)
 
         # Pass through the fully connected (linear) block
-        x = self.lin_block(x)
+        logits = self.lin_block(x)
 
         # Apply sigmoid activation for binary classification
-        x = self.sigmoid(x)
+        preds = self.sigmoid(logits)
 
-        return x
+        return logits, preds
+
     
 class GeneralCNNBinaryClassifier(nn.Module):
     """_summary_
@@ -293,12 +295,13 @@ class GeneralCNNBinaryClassifier(nn.Module):
         x = x.view(x.size(0), -1)
 
         # Pass through the fully connected (linear) block
-        x = self.linear_block(x)
+        logits = self.lin_block(x)
 
         # Apply sigmoid activation for binary classification
-        x = self.sigmoid(x)
+        preds = self.sigmoid(logits)
 
-        return x
+        return logits, preds
+
 
 
 class CNNBinaryClassifier2V1(nn.Module):

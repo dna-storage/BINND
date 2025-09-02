@@ -6,7 +6,9 @@ from torch.utils.data import Dataset
 class HTPDataset(Dataset):
     def __init__(self, data_path, max_seq_length, encode_fn_name=None):
         self.max_seq_length = max_seq_length
-        self.data_df = pd.read_csv(data_path)
+        if data_path:
+            self.data_df = pd.read_csv(data_path)
+            
         if encode_fn_name == 'nxn':
             self.encode_fn = self._encode_nxn
         elif encode_fn_name == '4xn_v1':

@@ -11,7 +11,7 @@ def test_model(model, dataloader, device, log_dir):
         for i_batch, sample_batched in enumerate(dataloader):
             inputs, labels = sample_batched['matrix'].to(device), sample_batched['label'].to(device)
             
-            outputs = model(inputs.float())
+            _, outputs = model(inputs.float())
 
             for i in range(len(labels)):
                 test_log.write(f'{labels[i].item()},{outputs[i].item()}\n')

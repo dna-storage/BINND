@@ -88,7 +88,9 @@ def predict_binding(
 
     # Perform inference with no gradient calculation
     with torch.no_grad():
-        output = model(encoded_input_tensor).item()
+        _, output = model(encoded_input_tensor)
+    
+    output = output.item()  # Get the scalar value from the tensor
 
     # Determine prediction based on a threshold
     prediction_label = "Bound" if output >= 0.5 else "Unbound"
