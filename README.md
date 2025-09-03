@@ -31,6 +31,13 @@ Before you begin, ensure you have the following installed on your system:
 - **Conda (or Miniconda/Anaconda):** A package and environment manager for Python. If you don't have it, you can download Miniconda from [here](https://docs.conda.io/en/latest/miniconda.html).
 - **Make:** A build automation tool, typically pre-installed on Linux and macOS. For Windows, you might need to install it (e.g., via Chocolatey or Git Bash which often includes it).
 
+- **OS Compatibility**: This package has been tested and verified to work on the following operating systems:
+
+    | Operating System  | Version(s)       |
+    | ----------------- | ---------------- |
+    |Ubuntu|22.04.5 LTS|
+    |Red Hat Enterprise Linux|9.4|
+
 ### Step-by-Step Setup Guide 👇
 
 Follow these steps in your terminal or command prompt:
