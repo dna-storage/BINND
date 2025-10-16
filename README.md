@@ -21,7 +21,7 @@ The ability to predict the interactions between DNA molecules is broadly importa
 
 ## Setup and Installation 🛠️
 
-To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components.
+To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components. You can expect the entire setup process to take about 5-10 minutes.
 
 ### Prerequisites
 
