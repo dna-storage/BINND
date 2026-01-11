@@ -11,3 +11,4 @@ ray==2.48.0
 tensorboardx==2.6.4
 typing-extensions==4.12.2
 typing-inspection==0.4.1
+primer3-py==2.3.0
