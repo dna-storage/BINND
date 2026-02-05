@@ -7,11 +7,11 @@ This repository contains the official implementation of **BINND (Binding and Int
 -   [Project Overview](#project-overview-✨)
 -   [Setup and Installation](#setup-and-installation-🛠️)
     -   [Prerequisites](#prerequisites)
-    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide)
+    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide-👇)
         -   [1. Clone the Repository](#1-clone-the-repository)
         -   [2. Initialize the Project Environment](#2-initialize-the-project-environment)
         -   [3. Activate Your New Environment](#3-activate-your-new-environment)
-        - [Alternative: Run with Docker](#4-alternative-run-with-docker-🐳)
+        - [4. Alternative: Run with Docker](#4-alternative-run-with-docker-🐳)
 -   [Using BINND for Prediction](#using-binnd-for-prediction-🚀)
 -   [Expanding BINND](#expanding-binnd)
 
