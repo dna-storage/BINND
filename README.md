@@ -4,15 +4,15 @@ This repository contains the official implementation of **BINND (Binding and Int
 
 ## Table of Contents
 
--   [Project Overview](#project-overview-✨)
--   [Setup and Installation](#setup-and-installation-🛠️)
+-   [Project Overview](#project-overview-)
+-   [Setup and Installation](#setup-and-installation-)
     -   [Prerequisites](#prerequisites)
-    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide-👇)
+    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide-)
         -   [1. Clone the Repository](#1-clone-the-repository)
         -   [2. Initialize the Project Environment](#2-initialize-the-project-environment)
         -   [3. Activate Your New Environment](#3-activate-your-new-environment)
-        - [4. Alternative: Run with Docker](#4-alternative-run-with-docker-🐳)
--   [Using BINND for Prediction](#using-binnd-for-prediction-🚀)
+    - [Alternative: Run with Docker](#4-alternative-run-with-docker-)
+-   [Using BINND for Prediction](#using-binnd-for-prediction-)
 -   [Expanding BINND](#expanding-binnd)
 
 
@@ -23,6 +23,8 @@ The ability to predict the interactions between DNA molecules is broadly importa
 ## Setup and Installation 🛠️
 
 To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components. You can expect the entire setup process to take about 5-10 minutes.
+
+**Prefer Docker?** skip to [Alternative: Run with Docker section](#alternative-run-with-docker-)
 
 ### Prerequisites
 
@@ -80,7 +82,7 @@ conda activate BINND
 
 - **`conda activate BINND`**: This command switches your terminal to use the Python and packages from the `BINND` Conda environment. You'll usually see `(BINND)` appear at the beginning of your terminal prompt when it's active.
 
-### 4. Alternative: Run with Docker 🐳
+## Alternative: Run with Docker 🐳
 If you prefer to run BINND in a containerized environment, you can use Docker.
 
 **Prerequisites:**
