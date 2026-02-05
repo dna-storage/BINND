@@ -79,6 +79,28 @@ conda activate BINND
 
 - **`conda activate BINND`**: This command switches your terminal to use the Python and packages from the `BINND` Conda environment. You'll usually see `(BINND)` appear at the beginning of your terminal prompt when it's active.
 
+### 4. Alternative: Run with Docker 🐳
+If you prefer to run BINND in a containerized environment, you can use Docker.
+
+**Prerequisites:**
+1. Install [Docker Desktop](https://docs.docker.com/get-docker/) (Windows/macOS) or [Docker Engine](https://docs.docker.com/engine/install/) (Linux).
+2. If using a GPU, ensure you have the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed.
+
+**Build the Image:**
+From the root of the repository, run:
+```bash
+docker build -t binnd .
+```
+
+**Run the Container:** To start an interactive session:
+```bash
+# For CPU usage:
+docker run -it binnd
+
+# For GPU acceleration (recommended):
+docker run --gpus all -it binnd
+```
+
 <!-- ### 4. Load Custom Environment Variables
 
 Your project requires specific environment variables (like `PYTHONPATH`) to be set for the code to find its modules correctly.
