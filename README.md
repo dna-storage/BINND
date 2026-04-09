@@ -4,14 +4,15 @@ This repository contains the official implementation of **BINND (Binding and Int
 
 ## Table of Contents
 
--   [Project Overview](#project-overview-✨)
--   [Setup and Installation](#setup-and-installation-🛠️)
+-   [Project Overview](#project-overview-)
+-   [Setup and Installation](#setup-and-installation-️)
     -   [Prerequisites](#prerequisites)
-    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide)
+    -   [Step-by-Step Setup Guide](#step-by-step-setup-guide-)
         -   [1. Clone the Repository](#1-clone-the-repository)
         -   [2. Initialize the Project Environment](#2-initialize-the-project-environment)
-        -   [3. Activate Your New Environment](#3-activate-your-new-environment)
--   [Using BINND for Prediction](#using-binnd-for-prediction-🚀)
+        -   [3. Activate Your New Environment](#3-activate-your-new-environment-every-session)
+    - [Alternative: Run with Docker](#alternative-run-with-docker-)
+-   [Using BINND for Prediction](#using-binnd-for-prediction-)
 -   [Expanding BINND](#expanding-binnd)
 
 
@@ -22,6 +23,8 @@ The ability to predict the interactions between DNA molecules is broadly importa
 ## Setup and Installation 🛠️
 
 To get started with this project, please follow these steps. This will set up the necessary software environment and download any required components. You can expect the entire setup process to take about 5-10 minutes.
+
+**Prefer Docker?** skip to [Alternative: Run with Docker section](#alternative-run-with-docker-)
 
 ### Prerequisites
 
@@ -78,6 +81,28 @@ conda activate BINND
 ```
 
 - **`conda activate BINND`**: This command switches your terminal to use the Python and packages from the `BINND` Conda environment. You'll usually see `(BINND)` appear at the beginning of your terminal prompt when it's active.
+
+## Alternative: Run with Docker 🐳
+If you prefer to run BINND in a containerized environment, you can use Docker.
+
+**Prerequisites:**
+1. Install [Docker Desktop](https://docs.docker.com/get-docker/) (Windows/macOS) or [Docker Engine](https://docs.docker.com/engine/install/) (Linux).
+2. If using a GPU, ensure you have the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) installed.
+
+**Build the Image:**
+From the root of the repository, run:
+```bash
+docker build -t binnd .
+```
+
+**Run the Container:** To start an interactive session:
+```bash
+# For CPU usage:
+docker run -it binnd
+
+# For GPU acceleration (recommended):
+docker run --gpus all -it binnd
+```
 
 <!-- ### 4. Load Custom Environment Variables
 
