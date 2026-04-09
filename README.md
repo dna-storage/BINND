@@ -1,5 +1,7 @@
 # 🧬 BINND: Binding and Interaction Neural Network for DNA
 
+[![DOI](https://zenodo.org/badge/1036072466.svg)](https://doi.org/10.5281/zenodo.19488794)
+
 This repository contains the official implementation of **BINND (Binding and Interaction Neural Network for DNA)**, a novel framework designed to predict interactions between DNA molecules with high accuracy and speed.
 
 ## Table of Contents
