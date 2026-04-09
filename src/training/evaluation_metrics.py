@@ -150,9 +150,4 @@ def plot_confusion_matrix(metric_json_path, out_path):
 
 
 if __name__ == "__main__":
-    # plot_confusion_matrix("/gpfs_backup/tuck_data/gbrihad//DNABindML/experiments/logs/cnn_20x20_downsampled_26mil/test_metrics.json",
-    #                       "/gpfs_backup/tuck_data/gbrihad//DNABindML/experiments/logs/cnn_20x20_downsampled_26mil/confusion_matrix.png")
-    
-    df = pd.read_csv("/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/cnn_20x20_downsampled_26mil/test_log.csv")
-
-    plot_roc_curve(df['Label'], df['Probability'], "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/cnn_20x20_downsampled_26mil/roc_curve.png")
+   pass

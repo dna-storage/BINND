@@ -50,8 +50,4 @@ def plot_logs(train_log_path, val_log_path, log_interval, out_dir):
 
 
 if __name__ == "__main__":
-    train_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/demo/train_log.csv"
-    val_log_path = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/demo/val_log.csv"
-    out_dir = "/gpfs_backup/tuck_data/gbrihad/DNABindML/experiments/logs/demo"
-
-    plot_logs(train_log_path, val_log_path, 500, out_dir)
+   pass
