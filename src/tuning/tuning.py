@@ -153,11 +153,4 @@ def main(data_directory, tune_log_dir, max_num_epochs=6, patience=2, reduction_f
     print(f"Best trial final validation accuracy: {best_result.metrics['accuracy']}")
     
 if __name__ == '__main__':
-    main(
-        "/gpfs_backup/tuck_data/gbrihad/DNABindML/data/tuning",
-        "/gpfs_backup/tuck_data/gbrihad/DNABindML/outputs/ray_test",
-        max_num_epochs=10,
-        patience=2,
-        reduction_factor=2,
-        num_trials=2
-        )
+    pass

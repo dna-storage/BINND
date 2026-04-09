@@ -56,3 +56,5 @@ scripts/hpc_scripts.py
 # ---------------------
 src/scratchpad.py
 src/explainability/**
+
+publications/
